@@ -16,5 +16,5 @@ Joseph Ukpong personal portfolio website
 
 ## Live Site
 
-[josephukpong.github.io/portfolio](https://justjokan.github.io/portfolio)
+[josephukpong.github.io/personal-portfolio](https://justjokan.github.io/personal-portfolio)
 

@@ -1,6 +1,6 @@
-# Joseph Ukpong — Portfolio
+# Portfolio
 
-Personal portfolio website
+Joseph Ukpong personal portfolio website
 
 ## Built With
 

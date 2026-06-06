@@ -1,0 +1,406 @@
+/* =============================================
+   CSS CUSTOM PROPERTIES (variables)
+   All colors, fonts, and spacing in one place.
+   Change a value here and it updates everywhere.
+   ============================================= */
+:root {
+  --color-bg: #f7f7f7;
+  --color-text: #222;
+  --color-nav-bg: #111;
+  --color-hero-bg: #181818;
+  --color-card-bg: #ffffff;
+  --color-border: #ddd;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-footer-bg: #111;
+  --color-footer-text: #ffffff;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --max-width: 1100px;
+  --radius: 12px;
+}
+
+/* =============================================
+   RESET
+   box-sizing: border-box means padding and
+   border are included in an element's width,
+   not added on top of it.
+   ============================================= */
+* {
+  box-sizing: border-box;
+}
+
+/* =============================================
+   FOCUS STYLES (accessibility)
+   :focus-visible only fires during keyboard
+   navigation, not mouse clicks — so keyboard
+   users get a clear ring without mouse users
+   seeing an outline every time they click.
+   ============================================= */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* =============================================
+   NAVIGATION
+   Flexbox keeps the logo on the left and
+   nav links on the right in one row.
+   position: sticky keeps it visible while
+   scrolling; z-index: 10 keeps it above
+   all other content.
+   ============================================= */
+.site-header {
+  background: var(--color-nav-bg);
+  color: var(--color-footer-text);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  color: var(--color-footer-text);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: var(--color-footer-text);
+  margin-left: 18px;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  color: var(--color-footer-text);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* The dark background overlay — hidden entirely on desktop */
+.nav-overlay {
+  display: none;
+}
+
+/* =============================================
+   HERO SECTION
+   Full-width dark banner at the top of the page.
+   max-width on .hero-content keeps text from
+   stretching too wide on large screens.
+   ============================================= */
+.hero-section {
+  background: var(--color-hero-bg);
+  color: var(--color-footer-text);
+  padding: 90px 20px;
+}
+
+.hero-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 0;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.hero-section > .hero-content > p {
+  max-width: 700px;
+}
+
+.hero-buttons {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* =============================================
+   BUTTONS
+   .button is the base style shared by all
+   buttons. .primary-button and .secondary-button
+   are modifier classes that override specific
+   properties on top of the base.
+   ============================================= */
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.15s;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.primary-button {
+  background: var(--color-footer-text);
+  color: var(--color-nav-bg);
+}
+
+.secondary-button {
+  border: 1px solid var(--color-footer-text);
+  color: var(--color-footer-text);
+}
+
+/* =============================================
+   CONTENT SECTIONS
+   max-width keeps all sections aligned at
+   the same 1100px column. padding adds
+   breathing room above and below.
+   ============================================= */
+.content-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* =============================================
+   ABOUT SECTION
+   Flexbox puts the photo beside the text.
+   flex-shrink: 0 prevents the photo from
+   squishing when the text is long.
+   border-radius: 50% makes the square image
+   appear as a circle.
+   ============================================= */
+.about-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   SKILLS GRID
+   CSS Grid with two equal columns.
+   repeat(2, minmax(0, 1fr)) means: 2 columns,
+   each at least 0px wide and at most 1 equal
+   fraction of available space.
+   ============================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.skills-grid div {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+/* =============================================
+   PROJECT CARDS
+   Each card is its own two-column grid:
+   a fixed 220px image column on the left,
+   and a flexible text column on the right.
+   align-items: start means the image and text
+   both anchor to the top, not the center —
+   better for tall project descriptions.
+   ============================================= */
+.project-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+  align-items: start;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  display: block;
+}
+
+.project-link {
+  font-weight: bold;
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.project-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* =============================================
+   EXPERIENCE CARD
+   Same visual style as skill and project cards.
+   ============================================= */
+.experience-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--color-footer-bg);
+  color: var(--color-footer-text);
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE
+   @media (max-width: 700px) means:
+   "apply these overrides when the screen is
+   narrower than 700px."
+   This is a desktop-first approach: the rules
+   above define the desktop layout, and these
+   rules simplify it for small screens.
+   ============================================= */
+@media (max-width: 700px) {
+  
+  /* Show the hamburger button and elevate it above the overlay */
+  .nav-toggle {
+    display: block;
+    position: relative;
+    z-index: 60;
+  }
+
+  /* The dark background overlay */
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 40;
+  }
+
+  /* When JavaScript adds the .open class */
+  .nav-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Off-canvas slide menu for mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: var(--color-nav-bg);
+    transform: translateX(100%); /* Pushed off-screen */
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 20px 20px; /* Top padding clears the hamburger button */
+    margin-top: 0;
+    z-index: 50; /* Above the overlay, below the button */
+  }
+
+  /* Slide in when open */
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  /* Keep the logo and hamburger on the same horizontal line */
+  .navbar {
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* Adjust spacing for mobile links */
+  .nav-links a {
+    margin: 16px 0;
+    font-size: 1.25rem;
+  }
+
+  /* Smaller hero heading on mobile */
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Stack hero buttons vertically */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Stack about photo above text */
+  .about-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* One column for skills */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* One column for project cards */
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+}

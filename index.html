@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph Ukpong | Software Engineering Portfolio</title>
+  <meta name="description" content="Joseph Ukpong's Fullstack Sofware, Cloud and Data Engineering Porfolio." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="logo" href="#home">Joseph Ukpong</a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" class="hero-section" aria-labelledby="home-heading">
+      <div class="hero-content">
+        <p class="eyebrow">Full Stack • Cloud • Data </p>
+        <h1 id="home-heading">Hi, I'm Joseph Ukpong.</h1>
+        <p>
+          I'm a Computer Science student focused on building practical software systems
+          with Python, Flask, SQL, Docker, JavaScript, and data tools.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="button primary-button">View Projects</a>
+          <a href="assets/portfolio-resume.pdf" class="button secondary-button"
+             target="_blank" rel="noopener noreferrer">Download Resume</a>
+          <a href="https://github.com/JustJokan" class="button secondary-button"
+             target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/joseph-imeikanukpong/" class="button secondary-button"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="content-section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <div class="about-inner">
+        <img
+          src="https://placehold.co/160x160?text=Photo"
+          alt="Joseph Ukpong, Computer Science student"
+          class="profile-photo"
+          width="160"
+          height="160"
+        />
+        <p>
+          I'm interested in backend engineering, data systems, cloud development, and applied AI.
+          My recent work includes a Flask and SQLAlchemy e-commerce analytics app, an AI/data
+          research lab experience using NLP and transformer based models, and a full stack
+          prediction market portfolio tracker using Postgres, APIs, and AI-generated reports.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="content-section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+
+      <div class="skills-grid">
+        <div>
+          <h3>Languages</h3>
+          <p>C, Java, Python, JavaScript, TypeScript, SQL, HTML, CSS</p>
+        </div>
+
+        <div>
+          <h3>Backend &amp; Databases</h3>
+          <p>Flask, SQLAlchemy, SQLite, PostgreSQL, Supabase, REST-style routing</p>
+        </div>
+
+        <div>
+          <h3>Data &amp; AI</h3>
+          <p>Pandas, NumPy, NLP, RoBERTa, transformer models, data analysis</p>
+        </div>
+
+        <div>
+          <h3>Cloud &amp; Tools</h3>
+          <p>Docker, Git, GitHub, Railway, GitHub Pages, pytest, Linux command line</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="content-section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Featured Projects</h2>
+
+      <article class="project-card">
+        <img
+          src="assets/ai-data-lab.png"
+          alt="AI Data Research Lab: visualization of NLP text analysis pipeline"
+          width="220"
+          height="150"
+        />
+        <div>
+          <h3>AI Data Research Lab Experience</h3>
+          <p>
+            Applied NLP and transformer-based models to analyze large-scale election-related
+            media data in a research setting. Supported research workflows involving data
+            cleaning, text classification, trend analysis, and insight extraction.
+          </p>
+          <p><strong>Tech:</strong> Python, NLP, RoBERTa, transformer models, data analysis</p>
+          <a href="#" class="project-link">View Summary</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="assets/peer-dashboard.png"
+          alt="Peer app: prediction-market portfolio dashboard with positions and P&amp;L"
+          width="220"
+          height="150"
+        />
+        <div>
+          <h3>Peer</h3>
+          <p>
+            Full-stack prediction-market portfolio tracker with user profiles, platform
+            connections, Postgres-backed data, scheduled sync jobs, and AI-generated reports.
+          </p>
+          <p><strong>Tech:</strong> Next.js, TypeScript, React, Supabase, PostgreSQL, Railway, Anthropic/Claude</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="https://placehold.co/220x150?text=FauxShop"
+          alt="FauxShop: analytics dashboard showing top products by revenue"
+          width="220"
+          height="150"
+        />
+        <div>
+          <h3>FauxShop</h3>
+          <p>
+            Flask and SQLAlchemy e-commerce analytics app with seeded data, analytics
+            dashboards, unit tests, stress scenarios, and Docker support.
+          </p>
+          <p><strong>Tech:</strong> Python, Flask, SQLAlchemy, SQLite, Jinja, pytest, Docker</p>
+          <a href="#" class="project-link">View Project</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience" class="content-section" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+
+      <article class="experience-card">
+        <h3>AI Data Research Lab</h3>
+        <p>
+          Worked with NLP and transformer-based models to support research workflows involving
+          large-scale text data, analysis, and insight extraction.
+        </p>
+      </article>
+    </section>
+
+    <section id="resume" class="content-section" aria-labelledby="resume-heading">
+      <h2 id="resume-heading">Resume</h2>
+      <p>Download my resume to see my full experience, education, and technical background.</p>
+      <a href="assets/portfolio-resume.pdf" class="button primary-button"
+         target="_blank" rel="noopener noreferrer">
+        Download Resume (PDF)
+      </a>
+    </section>
+
+    <section id="contact" class="content-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p>Email: <a href="mailto:imeikan.ukpong@emory.edu">Imeikan.Ukpong@emory.edu</a></p>
+      <p>GitHub: <a href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">github.com/JustJokan</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joseph-imeikanukpong</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Joseph Ukpong. Built with HTML, CSS, and JavaScript.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

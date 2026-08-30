@@ -5,214 +5,201 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joseph Ukpong | Software Engineering Portfolio</title>
   <meta name="description" content="Joseph Ukpong's Fullstack Sofware, Cloud and Data Engineering Porfolio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header class="site-header">
-    <div id="navOverlay" class="nav-overlay" aria-hidden="true"></div>
+  <div class="app-shell">
 
-    <nav class="navbar" aria-label="Primary navigation">
-      <a class="logo" href="#home">Joseph Ukpong</a>
-
+    <nav class="rail-nav" aria-label="Primary navigation">
+      <a href="#home" class="brand" id="brandLink">Joseph Ukpong</a>
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Contact</a>
+        <button type="button" class="nav-link" data-target="home">Home</button>
+        <button type="button" class="nav-link" data-target="skills">Skills</button>
+        <button type="button" class="nav-link" data-target="experience">Experience</button>
+        <button type="button" class="nav-link" data-target="projects">Projects</button>
+        <button type="button" class="nav-link" data-target="contact">Contact</button>
       </div>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span aria-hidden="true">☰</span>
-      </button>
     </nav>
-  </header>
 
-  <main>
+    <div class="rail" id="rail">
 
-    <section id="home" class="hero-section" aria-labelledby="home-heading">
-      <div class="hero-content">
-        <p class="eyebrow">Full Stack • Cloud • Data </p>
-        <h1 id="home-heading">Hi, I'm Joseph Ukpong.</h1>
-        <p>
-          I'm a Computer Science student who builds practical hybrid software systems
-          using Cloud services and evaluates them using analytic data tools.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#projects" class="button primary-button">View Projects</a>
-          <a href="assets/portfolio-resume.pdf" class="button secondary-button"
-             target="_blank" rel="noopener noreferrer">View Resume</a>
-          <a href="https://github.com/JustJokan" class="button secondary-button"
-             target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/joseph-imeikanukpong/" class="button secondary-button"
-             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <section class="slide slide-home" data-screen-label="01 Home" data-stop="1" data-nav="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Full Stack &middot; Cloud &middot; Data</p>
+          <h1 class="hero-title">Hi, I'm<br>Joseph Ukpong.</h1>
+          <p class="type-line"><span id="typedText"></span><span class="caret" aria-hidden="true">&nbsp;</span></p>
+          <p class="hero-summary">I'm a Computer Science and Economics student at Emory University. I enjoy creating systems that can solve problems and increase productivity. I design hybrid applications that can scale, making use of cloud services and their tools to evaluate their performance to make them better.</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" id="viewProjectsBtn">View projects</button>
+            <a class="btn btn-secondary" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="content-section" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <div class="about-inner">
-        <img
-          src="assets/profile-pic.JPG"
-          alt="Joseph Ukpong, Computer Science student"
-          class="profile-photo"
-          width="160"
-          height="160"
-        />
-        <p>
-          I'm a Computer Science student at Emory University interested in System Design and Software Engineering, especially in
-          the field of cloud services. I also enjoy Data Analytics and Engineering, more specifically the development of the data 
-          needed to train models and the use of LLM's for data summaries and analysis results. 
-
-        </p>
-      </div>
-    </section>
-
-    <section id="skills" class="content-section" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
-
-      <div class="skills-grid">
-        <div>
-          <h3>Languages</h3>
-          <p>C, Java, Python, JavaScript, TypeScript, SQL, HTML, CSS</p>
+        <div class="hero-portrait">
+          <div class="lighten hero-portrait-frame"><img src="assets/profile-pic.png" alt="Joseph Ukpong" /></div>
         </div>
+      </section>
 
-        <div>
-          <h3>Backend &amp; Databases</h3>
-          <p>Flask, SQLAlchemy, SQLite, PostgreSQL, Supabase, REST-style routing</p>
+      <section class="slide slide-skills" data-screen-label="02 Skills" data-stop="1" data-nav="skills">
+        <p class="eyebrow">02 &mdash; Stack</p>
+        <h2 class="section-title">Four layers I work across.</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <span class="skill-index">01</span>
+            <h3>Languages</h3>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">C</span><span class="tag tag-neutral">Java</span><span class="tag tag-neutral">Python</span><span class="tag tag-neutral">JavaScript</span><span class="tag tag-neutral">TypeScript</span><span class="tag tag-neutral">SQL</span><span class="tag tag-neutral">HTML</span><span class="tag tag-neutral">CSS</span><span class="tag tag-neutral">C++</span><span class="tag tag-neutral">Rust</span><span class="tag tag-neutral">PHP</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-index">02</span>
+            <h3>Backend &amp; databases</h3>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Flask</span><span class="tag tag-neutral">SQLAlchemy</span><span class="tag tag-neutral">SQLite</span><span class="tag tag-neutral">PostgreSQL</span><span class="tag tag-neutral">Supabase</span><span class="tag tag-neutral">REST routing</span><span class="tag tag-neutral">MySQL</span><span class="tag tag-neutral">Node.js</span><span class="tag tag-neutral">Next.js</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-index">03</span>
+            <h3>Data &amp; AI</h3>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Pandas</span><span class="tag tag-neutral">NumPy</span><span class="tag tag-neutral">NLP</span><span class="tag tag-neutral">RoBERTa</span><span class="tag tag-neutral">Transformers</span><span class="tag tag-neutral">Exploratory Data Analysis</span><span class="tag tag-neutral">Anthropic/Claude</span><span class="tag tag-neutral">ChatGPT</span><span class="tag tag-neutral">Gemini</span><span class="tag tag-neutral">MCP servers</span><span class="tag tag-neutral">Task automation</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <span class="skill-index">04</span>
+            <h3>Cloud &amp; tools</h3>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Docker</span><span class="tag tag-neutral">Git</span><span class="tag tag-neutral">GitHub</span><span class="tag tag-neutral">Railway</span><span class="tag tag-neutral">GitHub Pages</span><span class="tag tag-neutral">pytest</span><span class="tag tag-neutral">Linux CLI</span><span class="tag tag-neutral">AWS</span><span class="tag tag-neutral">Google Cloud</span><span class="tag tag-neutral">Microsoft Azure</span><span class="tag tag-neutral">S3</span><span class="tag tag-neutral">BigQuery</span><span class="tag tag-neutral">CloudWatch</span><span class="tag tag-neutral">Azure Monitor</span>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div>
-          <h3>Data &amp; AI</h3>
-          <p>Pandas, NumPy, NLP, RoBERTa, transformer models, data analysis</p>
+      <section class="slide slide-experience" data-screen-label="03 Experience" data-stop="1" data-nav="experience">
+        <div class="exp-copy">
+          <p class="eyebrow">03 &mdash; Experience</p>
+          <h2 class="section-title">Changing Policy Decisions with Data</h2>
+          <p class="exp-summary">Engineered software for data ingestion, worked with a team to process, analyze and understand said data and presented it to Chief District Attorneys to encourage a different approach to community based involvement.</p>
         </div>
-
-        <div>
-          <h3>Cloud &amp; Tools</h3>
-          <p>Docker, Git, GitHub, Railway, GitHub Pages, pytest, Linux command line</p>
+        <div class="exp-terminal">
+          <div class="exp-dots"><span></span><span></span><span></span></div>
+          <div class="exp-meta">
+            <span>role</span><span class="exp-meta-value">Data / Intelligence Analyst</span>
+            <span>org</span><span class="exp-meta-value">Office of the DeKalb County District Attorney</span>
+            <span>dateline</span><span class="exp-meta-value">Spring 2026</span>
+            <span>tools</span><span class="exp-meta-accent">Python &middot; Pandas &middot; SQL &middot; EDA &middot; AWS</span>
+            <span>formats</span><span class="exp-meta-value">Excel &middot; CSV &middot; JSON &middot; XML &middot; DB</span>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-list">
+            <li>Built pipelines with Python/Pandas&nbsp;to clean and filter data from legal databases across multiple formats (Excel, CSV, JSON, XML).</li>
+            <li>Ran exploratory analysis on the cleaned data, considering temporal, geographic and network pattern features, then shipped representative visualizations to government officials to inform policy.</li>
+            <li>Managed cloud relational databases and secure systems on Azure and AWS for secure data access and sharing.</li>
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="experience" class="content-section" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">Experience</h2>
-
-      <article class="experience-card">
-        <h3>Data/Intelligence Analyst</h3>
-        <p class="experience-org">Office of the DeKalb County District Attorney</p>
-        <ul>
-          <li>Cleaned and filtered legal datasets by developing scripts using Python and Pandas to process structured data including Excel, CSV, JSON, XML, and database entries.</li>
-          <li>Performed exploratory data analysis on cleaned data, identifying trends and making predictions based on temporal, geographic, and network-based patterns — contributing visualizations to government officials to inform policy decisions.</li>
-          <li>Managed relational databases and cloud-hosted data systems (Azure/AWS) to support secure data access and sharing.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section id="projects" class="content-section" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Featured Projects</h2>
-
-      <article class="project-card">
-        <img
-          src="assets/ai-data-lab.png"
-          alt="AI Data Research Lab: visualization of NLP text analysis pipeline"
-          width="220"
-          height="150"
-        />
-        <div>
-          <h3>AI Data Research Lab Experience</h3>
-          <p>
-            Applied NLP and transformer-based models to analyze large scale election related
-            media data in a research setting. Supported research workflows involving data
-            cleaning, text classification, trend analysis, and insight extraction.
-          </p>
-          <p><strong>Tech:</strong> Python, NLP, RoBERTa, transformer models, data analysis</p>
-          <a href="#" class="project-link">View Summary</a>
+      <section class="slide slide-project slide-wide" data-screen-label="04 Justice AI" data-stop="1" data-nav="projects">
+        <div class="project-copy">
+          <p class="eyebrow">04 &mdash; Project</p>
+          <h2 class="section-title">Justice AI</h2>
+          <p class="project-lede">An application born from time in the DA's office, this Offline, Citation backed Legal Assistant offers a way to consider legal files in a secure environment.</p>
+          <p class="project-tagline">A more secure and accuracy focused approach to LLM's</p>
+          <div class="project-tags">
+            <span class="tag tag-outline">Qwen3-8b</span><span class="tag tag-outline">fastembed</span><span class="tag tag-outline">Tauri 2</span><span class="tag tag-outline">React</span><span class="tag tag-outline">Rust</span><span class="tag tag-outline">Tailwind</span>
+          </div>
+          <a class="btn btn-primary" href="#">View summary</a>
         </div>
-      </article>
-
-      <article class="project-card">
-        <img
-          src="assets/peer-dashboard.png"
-          alt="Peer app: prediction-market portfolio dashboard with positions and P&amp;L"
-          width="220"
-          height="150"
-        />
-        <div>
-          <h3>Peer</h3>
-          <p>
-            Fullstack prediction-market portfolio tracker with user profiles, platform
-            connections, Postgres-backed data, scheduled sync jobs, and AI generated reports.
-          </p>
-          <p><strong>Tech:</strong> Next.js, TypeScript, React, Supabase, PostgreSQL, Railway, Anthropic/Claude</p>
-          <a href="https://peer-topaz.vercel.app/login" class="project-link" target="_blank" rel="noopener noreferrer">View Project</a>
+        <div class="project-media stop" data-stop="1" data-nav="projects">
+          <div class="lighten project-media-img"><img src="assets/justice-AI.png" alt="Justice AI legal citation assistant interface" /></div>
+          <div class="project-media-fade"></div>
         </div>
-      </article>
+      </section>
 
-      <article class="project-card">
-        <img
-          src="https://placehold.co/220x150?text=NicheShop"
-          alt="Pierre's Niche Shop: analytics dashboard showing top products by revenue"
-          width="220"
-          height="150"
-        />
-        <div>
-          <h3>Pierre's Niche Shop</h3>
-          <p>
-            Stardew Valley inspirted Flask / SQLAlchemy e-commerce analytics app with seeded data, analytics
-            dashboards, unit tests, stress scenarios, and Docker support.
-          </p>
-          <p><strong>Tech:</strong> Python, Flask, SQLAlchemy, SQLite, Jinja, pytest, Docker</p>
-          <a href="#" class="project-link">View Project</a>
+      <section class="slide-peer" data-screen-label="05 Peer">
+        <div class="peer-left stop" data-stop="1" data-nav="projects">
+          <div class="peer-copy">
+            <p class="eyebrow">05 &mdash; Project</p>
+            <h2 class="section-title">Peer</h2>
+            <p class="project-lede">One Portfolio. Endless Markets. Curate your view across multiple stocks within the markets. Developed for Desktop and Mobile, with scheduled sync positions, get AI powered reports into how the market is moving.</p>
+            <p class="project-tagline">Want to view stocks and their movement compared to each other? Here's the place to start.</p>
+            <div class="project-tags">
+              <span class="tag tag-outline">Next.js</span><span class="tag tag-outline">TypeScript</span><span class="tag tag-outline">React</span><span class="tag tag-outline">Supabase</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">Railway</span><span class="tag tag-outline">Claude</span>
+            </div>
+            <a class="btn btn-primary" href="https://peer-topaz.vercel.app" target="_blank" rel="noopener noreferrer">View live project</a>
+          </div>
+          <figure class="peer-figure">
+            <div class="lighten peer-figure-img"><img src="assets/peer-landing.png" alt="Peer mark" /></div>
+            <figcaption class="peer-figcaption">Peer</figcaption>
+          </figure>
         </div>
-      </article>
-
-      <article class="project-card">
-        <img
-          src="assets/justice-AI.png"
-          alt="Justice AI: Legal Citation Assistant"
-          width="220"
-          height="150"
-        />
-        <div>
-          <h3>Justice AI</h3>
-          <p>
-            Inspired by my work with the Dekalb County District Attorney's Office, Justice AI is a citation backed AI legal assistant with an emphasis on privacy. 
-            A full stack, Desktop application that can be ran and chatted with locally without the need of the internet. This model features the Qwen3-8b model with 
-            an attached RAG pipeline for increased response accuracy. Demonstrated use in legal spaces for those needing a 
-            secure and protected way to access and parse sensitive data.  
-          </p>
-          <p><strong>Tech:</strong> Qwen3-8b, fastembed, Tauri 2 (Rust), React, Vite, Tailwind CSS</p>
-          <a href="#" class="project-link">View Summary</a>
+        <div class="peer-right stop" data-stop="1" data-nav="projects">
+          <div class="lighten peer-hero-img"><img src="assets/peer-hero.png" alt="Peer" /></div>
         </div>
-      </article>
+      </section>
 
-    </section>
+      <section class="slide slide-project slide-wide" data-screen-label="06 AI Data Research Lab" data-stop="1" data-nav="projects">
+        <div class="project-copy">
+          <p class="eyebrow">06 &mdash; Research</p>
+          <h2 class="section-title">The Carter Center Research Lab</h2>
+          <p class="project-lede">Election-related media at scale, read by transformers. NLP classification over a large corpus, with the cleaning and trend analysis that make the output trustworthy.</p>
+          <p class="project-tagline">Realistic Research in an Undergraduate setting &mdash; the work was as much pipeline hygiene as final modeling.</p>
+          <div class="project-tags">
+            <span class="tag tag-outline">Python</span><span class="tag tag-outline">NLP</span><span class="tag tag-outline">RoBERTa</span><span class="tag tag-outline">Transformers</span><span class="tag tag-outline">Data analysis</span>
+          </div>
+          <a class="btn btn-primary" href="#">View summary</a>
+        </div>
+        <div class="project-media stop" data-stop="1" data-nav="projects">
+          <div class="lighten project-media-img"><img src="assets/ai-data-lab.png" alt="NLP text analysis pipeline visualization" /></div>
+          <div class="project-media-fade"></div>
+        </div>
+      </section>
 
-    <section id="resume" class="content-section" aria-labelledby="resume-heading">
-      <h2 id="resume-heading">Resume</h2>
-      <p>View and Download my Resume</p>
-      <a href="assets/ResumeAug26.pdf" class="button primary-button"
-         target="_blank" rel="noopener noreferrer">
-        View Resume (PDF)
-      </a>
-    </section>
+      <section class="slide slide-also" data-screen-label="07 Also building" data-stop="1" data-nav="projects">
+        <p class="eyebrow">07 &mdash; Also building</p>
+        <h2 class="section-title">Smaller builds, same habits.</h2>
+        <div class="also-grid">
+          <div class="also-card">
+            <h3>Pierre's Niche Shop</h3>
+            <p>A Stardew Valley-flavoured e-commerce analytics app: seeded data, revenue dashboards, pytest suites, stress scenarios, all of it Dockerized.</p>
+            <div class="skill-tags">
+              <span class="tag tag-neutral">Python</span><span class="tag tag-neutral">Flask</span><span class="tag tag-neutral">SQLAlchemy</span><span class="tag tag-neutral">SQLite</span><span class="tag tag-neutral">Jinja</span><span class="tag tag-neutral">pytest</span><span class="tag tag-neutral">Docker</span>
+            </div>
+            <a class="btn btn-ghost also-card-link" href="#">View project &rarr;</a>
+          </div>
+          <div class="also-card also-card-outline">
+            <h3>Everything else</h3>
+            <p>Coursework, experiments and other ideas live on GitHub. Repos are public &mdash; read the commits, not the marketing.</p>
+            <a class="btn btn-secondary also-card-link" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">github.com/JustJokan</a>
+          </div>
+        </div>
+      </section>
 
-    <section id="contact" class="content-section" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <p>Email: <a href="mailto:imeikan.ukpong@emory.edu">Imeikan.Ukpong@emory.edu</a></p>
-      <p>GitHub: <a href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">github.com/JustJokan</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joseph-imeikanukpong</a></p>
-    </section>
+      <section class="slide slide-contact" data-screen-label="08 Resume &amp; contact" data-stop="1" data-nav="contact">
+        <p class="eyebrow">08 &mdash; Resume &amp; contact</p>
+        <h2 class="section-title">Resume and Contacts</h2>
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="contact-link" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="contact-link" href="mailto:imeikan.ukpong@emory.edu">Email</a>
+          <a class="contact-link" href="assets/ResumeAug26.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+        </div>
+        <p class="copyright">&copy; 2026 Joseph Ukpong.</p>
+      </section>
 
-  </main>
+    </div>
 
-  <footer>
-    <p>© 2026 Joseph Ukpong. Built with HTML, CSS, and JavaScript.</p>
-  </footer>
+    <div class="control-cluster">
+      <span class="counter" id="counter">01 / 11</span>
+      <button type="button" class="btn btn-icon btn-secondary" aria-label="Previous panel" id="prevBtn">&larr;</button>
+      <button type="button" class="btn btn-icon btn-secondary" aria-label="Next panel" id="nextBtn">&rarr;</button>
+    </div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>

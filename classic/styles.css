@@ -1,0 +1,790 @@
+/* =============================================
+   NOCTURNE DESIGN TOKENS
+   Ported from the Nocturne design system used to
+   prototype this layout. Change a value here and
+   it updates everywhere.
+   ============================================= */
+:root {
+  --color-bg: #161826;
+  --color-surface: #232532;
+  --color-text: #e9e9ed;
+  --color-accent: #9184d9;
+  --color-accent-300: #d2cefd;
+  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+  --color-neutral-100: #f3f5fe;
+  --color-neutral-700: #595d6c;
+  --color-neutral-800: #3f424d;
+  --color-section: #262a60;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-heading-weight: 500;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 0 0 1px var(--color-neutral-800);
+  --shadow-md: 0 0 0 1px var(--color-neutral-700), 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+@keyframes caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* =============================================
+   NOCTURNE COMPONENTS
+   Buttons and tags, as defined by the design
+   system this layout was prototyped in.
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+}
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: 3px; }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+.tag-neutral { background: var(--color-neutral-800); color: var(--color-neutral-100); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+.lighten {
+  mix-blend-mode: lighten;
+  background-color: transparent;
+}
+
+/* =============================================
+   APP SHELL & NAV
+   Desktop: a fixed full-screen shell with a
+   horizontal scroll-snap rail inside it.
+   ============================================= */
+.app-shell {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+.rail-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px 40px;
+  background: linear-gradient(to bottom, rgba(22, 24, 38, 0.92), rgba(22, 24, 38, 0));
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 0;
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.nav-link.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+/* =============================================
+   RAIL — the horizontal scroll-snap track
+   ============================================= */
+.rail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+
+.slide {
+  flex: 0 0 auto;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.stop {
+  scroll-snap-align: start;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 18px;
+}
+
+.section-title {
+  font-size: clamp(34px, 5vh, 54px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0 0 clamp(24px, 4vh, 48px);
+  max-width: 800px;
+}
+
+/* =============================================
+   01 — HOME
+   ============================================= */
+.slide-home {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  padding: 0 0 0 40px;
+  background: radial-gradient(120% 90% at 8% 100%, var(--color-section) 0%, rgba(38, 42, 96, 0) 62%), var(--color-bg);
+}
+
+.hero-copy {
+  max-width: 640px;
+  padding: clamp(76px, 12vh, 120px) 40px clamp(40px, 8vh, 80px) 0;
+}
+
+.hero-copy .eyebrow { margin-bottom: 28px; }
+
+.hero-title {
+  font-size: clamp(44px, 6.6vh, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 24px;
+}
+
+.type-line {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 74%, transparent);
+  margin: 0 0 clamp(18px, 2.6vh, 32px);
+  min-height: 48px;
+}
+
+.caret {
+  display: inline-block;
+  width: 8px;
+  background: var(--color-accent);
+  color: transparent;
+  animation: caret 1.05s step-end infinite;
+}
+
+.hero-summary {
+  font-size: 16px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+  margin: 0 0 clamp(20px, 3vh, 36px);
+  max-width: 560px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-portrait {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64px;
+}
+
+.hero-portrait-frame {
+  width: min(340px, 100%);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.hero-portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =============================================
+   02 — SKILLS
+   ============================================= */
+.slide-skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(76px, 12vh, 120px) 80px clamp(40px, 8vh, 80px);
+  background: var(--color-bg);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1440px;
+}
+
+.skill-card {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skill-index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.skill-card h3 { font-size: 20px; }
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* =============================================
+   03 — EXPERIENCE
+   ============================================= */
+.slide-experience {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  padding: clamp(76px, 12vh, 120px) 80px clamp(40px, 8vh, 80px);
+  background: radial-gradient(90% 80% at 100% 0%, var(--color-section) 0%, rgba(38, 42, 96, 0) 58%), var(--color-bg);
+}
+
+.exp-summary {
+  font-size: 16px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  margin: 0;
+  max-width: 520px;
+}
+
+.exp-terminal {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.exp-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.exp-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-neutral-700);
+}
+
+.exp-dots span:first-child { background: var(--color-accent); }
+
+.exp-meta {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 6px 18px;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+
+.exp-meta-value { color: var(--color-text); }
+.exp-meta-accent { color: var(--color-accent-300); }
+
+.exp-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent);
+}
+
+.exp-list {
+  margin: 0;
+  padding-left: 18px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* =============================================
+   04 / 06 — PROJECT (wide, image bleed)
+   Shared layout for Justice AI and the Carter
+   Center research lab slides.
+   ============================================= */
+.slide-wide { width: calc(100vw + 600px); }
+
+.slide-project {
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  align-items: center;
+  padding: clamp(76px, 12vh, 120px) 0 clamp(40px, 8vh, 80px) 80px;
+  background: var(--color-bg);
+}
+
+.project-copy { padding-right: 56px; }
+
+.project-lede {
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.project-tagline {
+  font-size: 15px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  margin: 0 0 24px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--font-mono);
+  margin-bottom: 28px;
+}
+
+.project-media {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-media-img { position: absolute; inset: 0; }
+.project-media-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.project-media-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--color-bg) 0%, rgba(22, 24, 38, 0.3) 10%, rgba(22, 24, 38, 0) 26%);
+}
+
+/* =============================================
+   05 — PEER (double-wide, two independent stops)
+   ============================================= */
+.slide-peer {
+  flex: 0 0 auto;
+  width: 200vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100vw 100vw;
+  background: var(--color-bg);
+}
+
+.peer-left {
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  align-items: center;
+  gap: 64px;
+  padding: clamp(76px, 12vh, 120px) 80px clamp(40px, 8vh, 80px);
+  box-sizing: border-box;
+}
+
+.peer-copy { max-width: 620px; }
+
+.peer-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.peer-figure-img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.peer-figure-img img { display: block; width: 100%; height: auto; }
+
+.peer-figcaption {
+  font-family: "Pinyon Script", cursive;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.peer-right {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 6vh, 80px) 64px;
+  box-sizing: border-box;
+}
+
+.peer-hero-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.peer-hero-img img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - clamp(80px, 12vh, 160px));
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =============================================
+   07 — ALSO BUILDING
+   ============================================= */
+.slide-also {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(76px, 12vh, 120px) 80px clamp(40px, 8vh, 80px);
+  background: var(--color-bg);
+}
+
+.also-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  gap: 24px;
+}
+
+.also-card {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.also-card h3 { font-size: 24px; }
+
+.also-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.also-card-outline {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid var(--color-divider);
+}
+
+.also-card-link {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* =============================================
+   08 — RESUME & CONTACT
+   ============================================= */
+.slide-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(76px, 12vh, 120px) 80px clamp(40px, 8vh, 80px);
+  background: radial-gradient(110% 100% at 0% 100%, var(--color-section) 0%, rgba(38, 42, 96, 0) 60%), var(--color-bg);
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(420px, 100%);
+}
+
+.contact-link {
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 65px;
+  box-sizing: border-box;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  transition: border-color 0.2s;
+}
+
+.contact-link:hover { border-color: var(--color-accent); }
+
+.copyright {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+  margin: clamp(24px, 4vh, 56px) 0 0;
+}
+
+/* =============================================
+   PREV / NEXT + COUNTER — desktop-only affordance
+   ============================================= */
+.control-cluster {
+  position: absolute;
+  bottom: 32px;
+  right: 40px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.counter {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+/* =============================================
+   RESPONSIVE — MOBILE
+   The horizontal scroll-snap "slide" experience
+   above assumes a viewport wide enough to show a
+   whole panel at once, and fixed pixel columns
+   inside several slides. Neither survives a phone
+   screen, and a swipe-paginated panel UI actively
+   fights a phone's native back-swipe gesture and
+   resizing address bar. Below 700px this becomes
+   a normal vertical page instead: same content,
+   a plain scrolling interaction model.
+   ============================================= */
+@media (max-width: 700px) {
+  html, body {
+    overflow: visible;
+    height: auto;
+  }
+
+  .app-shell {
+    position: static;
+    overflow: visible;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .rail-nav {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    padding: 14px 20px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .rail {
+    position: static;
+    display: block;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .slide,
+  .slide-peer,
+  .peer-left,
+  .peer-right,
+  .project-media {
+    width: 100% !important;
+    height: auto;
+    scroll-snap-align: none;
+    overflow-y: visible;
+  }
+
+  .slide-wide { width: 100%; }
+  .slide-peer { display: block; }
+
+  /* Grid/flex items default to a min-width of their own max-content size,
+     which silently overflows the viewport instead of wrapping once a
+     heading or tag row is wider than 100% — every direct child of a
+     collapsed grid needs min-width: 0 to actually shrink to fit. */
+  .hero-copy,
+  .hero-portrait,
+  .exp-copy,
+  .exp-terminal,
+  .project-copy,
+  .project-media,
+  .peer-copy,
+  .peer-figure,
+  .also-card {
+    min-width: 0;
+  }
+
+  .hero-title,
+  .section-title {
+    overflow-wrap: break-word;
+  }
+
+  .slide-home {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .hero-copy {
+    max-width: 100%;
+    padding: 100px 20px 40px;
+  }
+  .hero-portrait {
+    height: auto;
+    padding: 0 20px 60px;
+  }
+
+  .slide-skills { padding: 100px 20px 60px; }
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .slide-experience {
+    grid-template-columns: 1fr;
+    padding: 100px 20px 60px;
+  }
+
+  .slide-project {
+    grid-template-columns: 1fr;
+    padding: 100px 20px 60px;
+  }
+  .project-copy { padding-right: 0; }
+  .project-media { height: 60vh; }
+
+  .peer-left {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 100px 20px 60px;
+  }
+  .peer-right {
+    height: 60vh;
+    padding: 20px;
+  }
+
+  .slide-also { padding: 100px 20px 60px; }
+  .also-grid { grid-template-columns: 1fr; }
+
+  .slide-contact { padding: 100px 20px 60px; }
+
+  .control-cluster { display: none; }
+}

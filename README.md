@@ -1,20 +1,33 @@
-# Portfolio
+# Joseph Ukpong's Portfolio
 
-Joseph Ukpong personal portfolio website
+A space-themed, pixel-art portfolio. Plain HTML, CSS and JavaScript (canvas); no build step.
 
-## Built With
+**Flow:** Landing (ship drifting past Earth) → **Launch** → Mission Control (live star readouts that cycle every 20 s) → **Projects / Experience** → *Confirm Interstellar Travel* → hyperspace → planet map → land on a planet to read the details.
 
-- HTML
-- CSS
-- JavaScript
+## Editing content
 
-## Featured Projects
+All planet text lives in **`js/data.js`** (`PORTFOLIO.experience` and `PORTFOLIO.projects`). Every entry currently holds placeholder text and has `placeholder: true`, which shows a "Placeholder content" badge. Fill in the fields and set `placeholder` to `false`.
 
-- **AI Data Research Lab Experience** — Made use of NLP and transformer based models to research large scale election related media data 
-- **Peer** — Fullstack unified prediction market portfolio tracker (Next.js, TypeScript, React, Supabase, PostgreSQL, Anthropic/Claude)
-- **FauxShop** — Flask and SQLAlchemy e-commerce analytics app with seeded data, pytest tests, and Docker support
+The Mission Control star catalogue (`STARS`) is in the same file. Its values are approximate figures from each star's Wikipedia infobox.
+
+## Files
+
+- `index.html`: markup for every screen and the two confirmation dialogs
+- `styles.css`: cockpit, CRT and pixel UI styles
+- `js/pixel.js`: noise helpers, the starfield/Earth/ship/hyperspace engine, star and planet sprites
+- `js/scenes.js`: the six planet landscapes
+- `js/app.js`: screen flow, dialogs, star cycling and the clickable cockpit controls
+- `classic/`: the previous version of the site, kept intact
+
+Respects `prefers-reduced-motion` (slower drift, no zoom or shake, and a short static hyperspace frame). All controls are real buttons, so they work from the keyboard.
+
+## Run locally
+
+```
+python3 -m http.server 8000
+# open http://localhost:8000
+```
 
 ## Live Site
 
-[josephukpong.github.io/personal-portfolio](https://justjokan.github.io/personal-portfolio)
-
+[justjokan.github.io/personal-portfolio](https://justjokan.github.io/personal-portfolio)

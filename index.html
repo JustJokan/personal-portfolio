@@ -2,205 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joseph Ukpong | Software Engineering Portfolio</title>
-  <meta name="description" content="Joseph Ukpong's Fullstack Sofware, Cloud and Data Engineering Porfolio." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Joseph Ukpong's Portfolio</title>
+  <meta name="description" content="Joseph Ukpong's software, cloud and data engineering portfolio. Launch the ship to explore." />
+  <meta name="theme-color" content="#04050d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div id="cockpitFrame" aria-hidden="true"><span class="strut s1"></span><span class="strut s2"></span></div>
 
-  <div class="app-shell">
+  <main>
+    <!-- PAGE 1 · LANDING -->
+    <section id="landing" class="screen is-active" aria-labelledby="title">
+      <header class="title-block">
+        <h1 id="title" aria-label="Joseph Ukpong's Portfolio">
+          <span class="t-name" aria-hidden="true">Joseph Ukpong</span>
+          <span class="t-port" aria-hidden="true">Portfolio</span>
+        </h1>
+        <button type="button" id="launchBtn" class="px-btn launch-btn">Launch</button>
+      </header>
+      <nav class="corner-links" id="cornerLinks" aria-label="Contact links"></nav>
+    </section>
 
-    <nav class="rail-nav" aria-label="Primary navigation">
-      <a href="#home" class="brand" id="brandLink">Joseph Ukpong</a>
-      <div class="nav-links" id="navLinks">
-        <button type="button" class="nav-link" data-target="home">Home</button>
-        <button type="button" class="nav-link" data-target="skills">Skills</button>
-        <button type="button" class="nav-link" data-target="experience">Experience</button>
-        <button type="button" class="nav-link" data-target="projects">Projects</button>
-        <button type="button" class="nav-link" data-target="contact">Contact</button>
+    <!-- PAGE 2 + 3 · MISSION CONTROL (star screen / planet map) -->
+    <section id="mc" class="screen" aria-label="Mission Control" hidden>
+      <div class="console" id="console">
+        <div class="console-top">
+          <button type="button" id="mcBack" class="px-btn small back-btn">&#9664; Back</button>
+          <div class="dest-tabs" id="destTabs" role="group" aria-label="Destinations">
+            <button type="button" class="tab" data-dest="projects">Projects</button>
+            <button type="button" class="tab" data-dest="experience">Experience</button>
+          </div>
+          <p class="sector" id="sectorLabel">SECTOR: ORIGIN</p>
+        </div>
+
+        <div class="console-body">
+          <div class="cluster cluster-left" aria-label="Ship systems">
+            <div class="switch-row" id="switches"></div>
+            <div class="gauges" aria-hidden="true">
+              <div class="gauge"><span class="gauge-fill" style="--h:.62"></span><em>FUEL</em></div>
+              <div class="gauge"><span class="gauge-fill" style="--h:.8"></span><em>O2</em></div>
+              <div class="gauge"><span class="gauge-fill" style="--h:.45"></span><em>HEAT</em></div>
+              <div class="gauge"><span class="gauge-fill" style="--h:.7"></span><em>PWR</em></div>
+            </div>
+            <div class="radar" aria-hidden="true"><span class="sweep"></span><span class="blip b1"></span><span class="blip b2"></span></div>
+          </div>
+
+          <div class="bezel">
+            <div class="crt" id="crt">
+              <div class="crt-star" id="starView">
+                <div class="star-pic">
+                  <canvas id="starCanvas" width="112" height="84" aria-hidden="true"></canvas>
+                  <p class="scale-note">size: log scale</p>
+                </div>
+                <div class="star-read" aria-live="polite">
+                  <p class="star-idx" id="starIdx">01 / 10</p>
+                  <h2 class="star-name" id="starName">The Sun</h2>
+                  <p class="star-cls" id="starCls"></p>
+                  <dl class="star-data">
+                    <div><dt>Temperature</dt><dd id="sTemp"></dd></div>
+                    <div><dt>Size (radius)</dt><dd id="sRad"></dd></div>
+                    <div><dt>Brightness</dt><dd id="sLum"></dd></div>
+                    <div><dt>Distance</dt><dd id="sDist"></dd></div>
+                    <div class="wide"><dt>Lifespan &amp; fate</dt><dd id="sFate"></dd></div>
+                  </dl>
+                </div>
+                <div class="star-ctrl">
+                  <button type="button" class="mini" id="starPrev" aria-label="Previous star">&#9664;</button>
+                  <button type="button" class="mini" id="starPause" aria-pressed="false" aria-label="Pause star cycle">II</button>
+                  <button type="button" class="mini" id="starNext" aria-label="Next star">&#9654;</button>
+                  <div class="cycle-bar" aria-hidden="true"><span id="cycleFill"></span></div>
+                </div>
+              </div>
+
+              <div class="crt-map" id="planetMap" hidden>
+                <h2 class="map-title" id="mapTitle">Experience Sector</h2>
+                <p class="map-sub">Select a planet to land</p>
+                <ul class="planet-list" id="planetList"></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="cluster cluster-right" aria-label="Flight controls">
+            <div class="lever-row" id="levers"></div>
+            <div class="knob-row">
+              <button type="button" class="knob" id="knob" aria-label="Frequency dial, setting 1"><span></span></button>
+              <div class="red-wrap">
+                <button type="button" class="cover" id="cover" aria-pressed="false" aria-label="Safety cover">COVER</button>
+                <button type="button" class="red-btn" id="redBtn" aria-label="Big red button" disabled></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="console-bottom">
+          <div class="keys" id="keys" role="group" aria-label="Auxiliary buttons"></div>
+          <p class="ticker" id="ticker" aria-live="polite">ALL SYSTEMS NOMINAL</p>
+        </div>
       </div>
-    </nav>
+    </section>
 
-    <div class="rail" id="rail">
+    <!-- PAGE 4 · PLANET -->
+    <section id="planet" class="screen" aria-labelledby="dossierRole" hidden>
+      <canvas id="planetCanvas" aria-hidden="true"></canvas>
+      <div class="planet-ui">
+        <button type="button" id="planetBack" class="px-btn small back-btn">&#9664; Back to ship</button>
+        <button type="button" id="planetMapBtn" class="px-btn small ghost">Planet map</button>
+      </div>
+      <article class="dossier" id="dossier"></article>
+    </section>
+  </main>
 
-      <section class="slide slide-home" data-screen-label="01 Home" data-stop="1" data-nav="home">
-        <div class="hero-copy">
-          <p class="eyebrow">Full Stack &middot; Cloud &middot; Data</p>
-          <h1 class="hero-title">Hi, I'm<br>Joseph Ukpong.</h1>
-          <p class="type-line"><span id="typedText"></span><span class="caret" aria-hidden="true">&nbsp;</span></p>
-          <p class="hero-summary">I'm a Computer Science and Economics student at Emory University. I enjoy creating systems that can solve problems and increase productivity. I design hybrid applications that can scale, making use of cloud services and their tools to evaluate their performance to make them better.</p>
-          <div class="hero-actions">
-            <button type="button" class="btn btn-primary" id="viewProjectsBtn">View projects</button>
-            <a class="btn btn-secondary" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-        <div class="hero-portrait">
-          <div class="lighten hero-portrait-frame"><img src="assets/profile-pic.png" alt="Joseph Ukpong" /></div>
-        </div>
-      </section>
+  <div id="flash" aria-hidden="true"></div>
+  <div id="fader" aria-hidden="true"></div>
 
-      <section class="slide slide-skills" data-screen-label="02 Skills" data-stop="1" data-nav="skills">
-        <p class="eyebrow">02 &mdash; Stack</p>
-        <h2 class="section-title">Four layers I work across.</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <span class="skill-index">01</span>
-            <h3>Languages</h3>
-            <div class="skill-tags">
-              <span class="tag tag-neutral">C</span><span class="tag tag-neutral">Java</span><span class="tag tag-neutral">Python</span><span class="tag tag-neutral">JavaScript</span><span class="tag tag-neutral">TypeScript</span><span class="tag tag-neutral">SQL</span><span class="tag tag-neutral">HTML</span><span class="tag tag-neutral">CSS</span><span class="tag tag-neutral">C++</span><span class="tag tag-neutral">Rust</span><span class="tag tag-neutral">PHP</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <span class="skill-index">02</span>
-            <h3>Backend &amp; databases</h3>
-            <div class="skill-tags">
-              <span class="tag tag-neutral">Flask</span><span class="tag tag-neutral">SQLAlchemy</span><span class="tag tag-neutral">SQLite</span><span class="tag tag-neutral">PostgreSQL</span><span class="tag tag-neutral">Supabase</span><span class="tag tag-neutral">REST routing</span><span class="tag tag-neutral">MySQL</span><span class="tag tag-neutral">Node.js</span><span class="tag tag-neutral">Next.js</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <span class="skill-index">03</span>
-            <h3>Data &amp; AI</h3>
-            <div class="skill-tags">
-              <span class="tag tag-neutral">Pandas</span><span class="tag tag-neutral">NumPy</span><span class="tag tag-neutral">NLP</span><span class="tag tag-neutral">RoBERTa</span><span class="tag tag-neutral">Transformers</span><span class="tag tag-neutral">Exploratory Data Analysis</span><span class="tag tag-neutral">Anthropic/Claude</span><span class="tag tag-neutral">ChatGPT</span><span class="tag tag-neutral">Gemini</span><span class="tag tag-neutral">MCP servers</span><span class="tag tag-neutral">Task automation</span>
-            </div>
-          </div>
-          <div class="skill-card">
-            <span class="skill-index">04</span>
-            <h3>Cloud &amp; tools</h3>
-            <div class="skill-tags">
-              <span class="tag tag-neutral">Docker</span><span class="tag tag-neutral">Git</span><span class="tag tag-neutral">GitHub</span><span class="tag tag-neutral">Railway</span><span class="tag tag-neutral">GitHub Pages</span><span class="tag tag-neutral">pytest</span><span class="tag tag-neutral">Linux CLI</span><span class="tag tag-neutral">AWS</span><span class="tag tag-neutral">Google Cloud</span><span class="tag tag-neutral">Microsoft Azure</span><span class="tag tag-neutral">S3</span><span class="tag tag-neutral">BigQuery</span><span class="tag tag-neutral">CloudWatch</span><span class="tag tag-neutral">Azure Monitor</span>
-            </div>
-          </div>
-        </div>
-      </section>
+  <dialog id="travelDialog" class="px-dialog" aria-labelledby="travelTitle">
+    <form method="dialog">
+      <h2 id="travelTitle">Confirm Interstellar Travel</h2>
+      <p id="travelDest">Destination: Projects Sector</p>
+      <div class="dlg-actions">
+        <button class="px-btn small ghost" value="no">No</button>
+        <button class="px-btn small" value="yes">Yes</button>
+      </div>
+    </form>
+  </dialog>
 
-      <section class="slide slide-experience" data-screen-label="03 Experience" data-stop="1" data-nav="experience">
-        <div class="exp-copy">
-          <p class="eyebrow">03 &mdash; Experience</p>
-          <h2 class="section-title">Changing Policy Decisions with Data</h2>
-          <p class="exp-summary">Engineered software for data ingestion, worked with a team to process, analyze and understand said data and presented it to Chief District Attorneys to encourage a different approach to community based involvement.</p>
-        </div>
-        <div class="exp-terminal">
-          <div class="exp-dots"><span></span><span></span><span></span></div>
-          <div class="exp-meta">
-            <span>role</span><span class="exp-meta-value">Data / Intelligence Analyst</span>
-            <span>org</span><span class="exp-meta-value">Office of the DeKalb County District Attorney</span>
-            <span>dateline</span><span class="exp-meta-value">Spring 2026</span>
-            <span>tools</span><span class="exp-meta-accent">Python &middot; Pandas &middot; SQL &middot; EDA &middot; AWS</span>
-            <span>formats</span><span class="exp-meta-value">Excel &middot; CSV &middot; JSON &middot; XML &middot; DB</span>
-          </div>
-          <div class="exp-divider"></div>
-          <ul class="exp-list">
-            <li>Built pipelines with Python/Pandas&nbsp;to clean and filter data from legal databases across multiple formats (Excel, CSV, JSON, XML).</li>
-            <li>Ran exploratory analysis on the cleaned data, considering temporal, geographic and network pattern features, then shipped representative visualizations to government officials to inform policy.</li>
-            <li>Managed cloud relational databases and secure systems on Azure and AWS for secure data access and sharing.</li>
-          </ul>
-        </div>
-      </section>
+  <dialog id="originDialog" class="px-dialog" aria-labelledby="originTitle">
+    <form method="dialog">
+      <h2 id="originTitle">Return to Origin?</h2>
+      <p>Jump back to Mission Control at the origin sector.</p>
+      <div class="dlg-actions">
+        <button class="px-btn small ghost" value="no">No</button>
+        <button class="px-btn small" value="yes">Yes</button>
+      </div>
+    </form>
+  </dialog>
 
-      <section class="slide slide-project slide-wide" data-screen-label="04 Justice AI" data-stop="1" data-nav="projects">
-        <div class="project-copy">
-          <p class="eyebrow">04 &mdash; Project</p>
-          <h2 class="section-title">Justice AI</h2>
-          <p class="project-lede">An application born from time in the DA's office, this Offline, Citation backed Legal Assistant offers a way to consider legal files in a secure environment.</p>
-          <p class="project-tagline">A more secure and accuracy focused approach to LLM's</p>
-          <div class="project-tags">
-            <span class="tag tag-outline">Qwen3-8b</span><span class="tag tag-outline">fastembed</span><span class="tag tag-outline">Tauri 2</span><span class="tag tag-outline">React</span><span class="tag tag-outline">Rust</span><span class="tag tag-outline">Tailwind</span>
-          </div>
-          <a class="btn btn-primary" href="#">View summary</a>
-        </div>
-        <div class="project-media stop" data-stop="1" data-nav="projects">
-          <div class="lighten project-media-img"><img src="assets/justice-AI.png" alt="Justice AI legal citation assistant interface" /></div>
-          <div class="project-media-fade"></div>
-        </div>
-      </section>
+  <noscript><p class="noscript">This portfolio needs JavaScript. <a href="classic/">View the classic site</a>.</p></noscript>
 
-      <section class="slide-peer" data-screen-label="05 Peer">
-        <div class="peer-left stop" data-stop="1" data-nav="projects">
-          <div class="peer-copy">
-            <p class="eyebrow">05 &mdash; Project</p>
-            <h2 class="section-title">Peer</h2>
-            <p class="project-lede">One Portfolio. Endless Markets. Curate your view across multiple stocks within the markets. Developed for Desktop and Mobile, with scheduled sync positions, get AI powered reports into how the market is moving.</p>
-            <p class="project-tagline">Want to view stocks and their movement compared to each other? Peer is the place to start.</p>
-            <div class="project-tags">
-              <span class="tag tag-outline">Next.js</span><span class="tag tag-outline">TypeScript</span><span class="tag tag-outline">React</span><span class="tag tag-outline">Supabase</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">Railway</span><span class="tag tag-outline">Claude</span>
-            </div>
-            <a class="btn btn-primary" href="https://peer-topaz.vercel.app" target="_blank" rel="noopener noreferrer">View live project</a>
-          </div>
-          <figure class="peer-figure">
-            <div class="lighten peer-figure-img"><img src="assets/peer-landing.png" alt="Peer mark" /></div>
-            <figcaption class="peer-figcaption">Peer</figcaption>
-          </figure>
-        </div>
-        <div class="peer-right stop" data-stop="1" data-nav="projects">
-          <div class="lighten peer-hero-img"><img src="assets/peer-hero.png" alt="Peer" /></div>
-        </div>
-      </section>
-
-      <section class="slide slide-project slide-wide" data-screen-label="06 AI Data Research Lab" data-stop="1" data-nav="projects">
-        <div class="project-copy">
-          <p class="eyebrow">06 &mdash; Research</p>
-          <h2 class="section-title">The Carter Center Research Lab</h2>
-          <p class="project-lede">Election-related media at scale, read by transformers. NLP classification over a large corpus, with the cleaning and trend analysis that make the output trustworthy.</p>
-          <p class="project-tagline">Realistic Research in an Undergraduate setting &mdash; the work was as much pipeline hygiene as final modeling.</p>
-          <div class="project-tags">
-            <span class="tag tag-outline">Python</span><span class="tag tag-outline">NLP</span><span class="tag tag-outline">RoBERTa</span><span class="tag tag-outline">Transformers</span><span class="tag tag-outline">Data analysis</span>
-          </div>
-          <a class="btn btn-primary" href="#">View summary</a>
-        </div>
-        <div class="project-media stop" data-stop="1" data-nav="projects">
-          <div class="lighten project-media-img"><img src="assets/ai-data-lab.png" alt="NLP text analysis pipeline visualization" /></div>
-          <div class="project-media-fade"></div>
-        </div>
-      </section>
-
-      <section class="slide slide-also" data-screen-label="07 Also building" data-stop="1" data-nav="projects">
-        <p class="eyebrow">07 &mdash; Also building</p>
-        <h2 class="section-title">Smaller builds, same habits.</h2>
-        <div class="also-grid">
-          <div class="also-card">
-            <h3>Pierre's Niche Shop</h3>
-            <p>A Stardew Valley-flavoured e-commerce analytics app: seeded data, revenue dashboards, pytest suites, stress scenarios, all of it Dockerized.</p>
-            <div class="skill-tags">
-              <span class="tag tag-neutral">Python</span><span class="tag tag-neutral">Flask</span><span class="tag tag-neutral">SQLAlchemy</span><span class="tag tag-neutral">SQLite</span><span class="tag tag-neutral">Jinja</span><span class="tag tag-neutral">pytest</span><span class="tag tag-neutral">Docker</span>
-            </div>
-            <a class="btn btn-ghost also-card-link" href="#">View project &rarr;</a>
-          </div>
-          <div class="also-card also-card-outline">
-            <h3>Everything else</h3>
-            <p>Coursework, experiments and other ideas live on GitHub. Repos are public &mdash; read the commits, not the marketing.</p>
-            <a class="btn btn-secondary also-card-link" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">github.com/JustJokan</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide slide-contact" data-screen-label="08 Resume &amp; contact" data-stop="1" data-nav="contact">
-        <p class="eyebrow">08 &mdash; Resume &amp; contact</p>
-        <h2 class="section-title">Resume and Contacts</h2>
-        <div class="contact-links">
-          <a class="contact-link" href="https://www.linkedin.com/in/joseph-imeikanukpong/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="contact-link" href="https://github.com/JustJokan" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="contact-link" href="mailto:imeikan.ukpong@emory.edu">Email</a>
-          <a class="contact-link" href="assets/ResumeAug26.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-        </div>
-        <p class="copyright">&copy; 2026 Joseph Ukpong.</p>
-      </section>
-
-    </div>
-
-    <div class="control-cluster">
-      <span class="counter" id="counter">01 / 11</span>
-      <button type="button" class="btn btn-icon btn-secondary" aria-label="Previous panel" id="prevBtn">&larr;</button>
-      <button type="button" class="btn btn-icon btn-secondary" aria-label="Next panel" id="nextBtn">&rarr;</button>
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/pixel.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
